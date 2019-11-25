@@ -1,7 +1,6 @@
 package com.appsgallery.retrofitfakejsonexample.activities;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,13 +19,13 @@ public class PostDetailsActivity extends AppCompatActivity {
         userId = findViewById(R.id.post_user_id);
         title = findViewById(R.id.post_title_details);
         body = findViewById(R.id.post_body_details);
-        Post post = (Post) getIntent().getSerializableExtra("post");
+        Post post = getIntent().getParcelableExtra("post");
         String id_str = String.valueOf(post.getId());
         String userId_str = String.valueOf(post.getUserId());
         String title_str = String.valueOf(post.getTitle());
-        Log.d("title", title_str);
+        //Log.d("title", title_str);
         String body_str = String.valueOf(post.getBody());
-        Log.d("body", body_str);
+        //Log.d("body", body_str);
 
         id.setText(id_str);
         userId.setText(userId_str);

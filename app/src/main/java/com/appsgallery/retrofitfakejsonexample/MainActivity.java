@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 //Log.i("INFO", String.valueOf(response.body().size()));
                 if (response.isSuccessful()) {
                     fetchDataInList(response.body());
-                    String title = String.valueOf(response.body());
-                    String body = String.valueOf(response.body());
+                    //String title = String.valueOf(response.body());
+                    //String body = String.valueOf(response.body());
                     //Log.i("title", title);
                     // Log.i("body", body);
                 }

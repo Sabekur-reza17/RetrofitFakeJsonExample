@@ -1,13 +1,13 @@
 package com.appsgallery.retrofitfakejsonexample.model;
 
 import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 
-public class Post implements Serializable {
+public class Post implements Parcelable {
     @SerializedName("userId")
     @Expose
     private Integer userId;
@@ -44,6 +44,18 @@ public class Post implements Serializable {
     }
 
 
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
+
     public Integer getUserId() {
         return userId;
     }
@@ -77,4 +89,26 @@ public class Post implements Serializable {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (userId == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(userId);
+        }
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(title);
+        dest.writeString(body);
+    }
 }
